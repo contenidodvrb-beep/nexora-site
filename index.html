@@ -272,6 +272,138 @@
     margin-top: 4px;
   }
 
+  /* Calculator */
+  .calc {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: 48px 40px;
+    margin-bottom: 80px;
+    box-shadow: var(--card-shadow);
+  }
+
+  .calc-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .calc-header h2 {
+    font-family: var(--heading);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .calc-header p {
+    color: var(--fg-muted);
+    font-size: 0.9375rem;
+  }
+
+  .calc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .calc-inputs { display: flex; flex-direction: column; gap: 28px; }
+
+  .calc-field label {
+    display: block;
+    font-family: var(--heading);
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-bottom: 10px;
+    color: var(--fg);
+  }
+
+  .calc-field label span {
+    font-weight: 400;
+    color: var(--fg-muted);
+    font-size: 0.8125rem;
+  }
+
+  .calc-slider-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .calc-slider-row input[type="range"] {
+    flex: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: var(--bg-alt);
+    border-radius: 3px;
+    outline: none;
+  }
+
+  .calc-slider-row input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    border: 3px solid var(--bg);
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+
+  .calc-value {
+    font-family: var(--heading);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--accent);
+    min-width: 56px;
+    text-align: right;
+  }
+
+  .calc-results {
+    background: var(--bg-alt);
+    border-radius: var(--radius);
+    padding: 32px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .calc-result-big {
+    font-family: var(--heading);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .calc-result-label {
+    font-size: 0.875rem;
+    color: var(--fg-muted);
+    margin-top: 4px;
+  }
+
+  .calc-result-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-top: 1px solid var(--card-border);
+    font-size: 0.875rem;
+  }
+
+  .calc-result-row span:first-child { color: var(--fg-muted); }
+  .calc-result-row span:last-child { font-weight: 600; color: var(--fg); }
+
+  .calc-cta {
+    margin-top: 8px;
+  }
+
+  @media (max-width: 640px) {
+    .calc { padding: 32px 20px; }
+    .calc-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+
   /* Sections */
   section { padding: 60px 0; }
 
@@ -717,6 +849,59 @@
     </div>
   </div>
 
+  <div class="calc" id="calculadora">
+    <div class="calc-header">
+      <h2>¿Cuánto puedes ahorrar automatizando?</h2>
+      <p>Mueve los controles y descubre el impacto en tu negocio</p>
+    </div>
+    <div class="calc-grid">
+      <div class="calc-inputs">
+        <div class="calc-field">
+          <label>Horas semanales en tareas manuales <span>(por persona)</span></label>
+          <div class="calc-slider-row">
+            <input type="range" id="calc-hours" min="2" max="40" value="15">
+            <div class="calc-value" id="calc-hours-val">15h</div>
+          </div>
+        </div>
+        <div class="calc-field">
+          <label>Personas en tu equipo</label>
+          <div class="calc-slider-row">
+            <input type="range" id="calc-people" min="1" max="20" value="3">
+            <div class="calc-value" id="calc-people-val">3</div>
+          </div>
+        </div>
+        <div class="calc-field">
+          <label>Costo por hora <span>(USD promedio)</span></label>
+          <div class="calc-slider-row">
+            <input type="range" id="calc-rate" min="3" max="30" value="8">
+            <div class="calc-value" id="calc-rate-val">$8</div>
+          </div>
+        </div>
+      </div>
+      <div class="calc-results">
+        <div>
+          <div class="calc-result-big" id="calc-savings">$1,080</div>
+          <div class="calc-result-label">ahorro mensual estimado</div>
+        </div>
+        <div class="calc-result-row">
+          <span>Horas recuperadas al mes</span>
+          <span id="calc-hours-saved">108h</span>
+        </div>
+        <div class="calc-result-row">
+          <span>Ahorro anual proyectado</span>
+          <span id="calc-annual">$12,960</span>
+        </div>
+        <div class="calc-result-row">
+          <span>Tareas que se pueden automatizar</span>
+          <span>~60%</span>
+        </div>
+        <div class="calc-cta">
+          <a href="#contacto" class="btn" style="width:100%;justify-content:center;">Ver cuánto puedo ahorrar con Nexora</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <section id="servicios">
     <div class="section-eyebrow">Servicios</div>
     <h2 class="section-title">Soluciones que se adaptan a tu negocio</h2>
@@ -854,3 +1039,43 @@
     <div>&copy; 2026 Nexora. Todos los derechos reservados.</div>
   </footer>
 </div>
+
+<script>
+(function(){
+  var hours = document.getElementById('calc-hours');
+  var people = document.getElementById('calc-people');
+  var rate = document.getElementById('calc-rate');
+  var hoursVal = document.getElementById('calc-hours-val');
+  var peopleVal = document.getElementById('calc-people-val');
+  var rateVal = document.getElementById('calc-rate-val');
+  var savings = document.getElementById('calc-savings');
+  var hoursSaved = document.getElementById('calc-hours-saved');
+  var annual = document.getElementById('calc-annual');
+
+  function fmt(n) {
+    return '$' + n.toLocaleString('en-US');
+  }
+
+  function calc() {
+    var h = +hours.value;
+    var p = +people.value;
+    var r = +rate.value;
+    var autoRate = 0.6;
+    var monthlyHours = Math.round(h * p * 4.33 * autoRate);
+    var monthlySavings = monthlyHours * r;
+    var annualSavings = monthlySavings * 12;
+
+    hoursVal.textContent = h + 'h';
+    peopleVal.textContent = p;
+    rateVal.textContent = '$' + r;
+    savings.textContent = fmt(monthlySavings);
+    hoursSaved.textContent = monthlyHours + 'h';
+    annual.textContent = fmt(annualSavings);
+  }
+
+  hours.addEventListener('input', calc);
+  people.addEventListener('input', calc);
+  rate.addEventListener('input', calc);
+  calc();
+})();
+</script>
