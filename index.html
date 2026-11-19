@@ -151,8 +151,8 @@
   /* Hero */
   .hero {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: 1.4fr 0.6fr;
+    gap: 48px;
     align-items: center;
     padding: 60px 0 40px;
   }
@@ -173,12 +173,12 @@
 
   .hero h1 {
     font-family: var(--heading);
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
     font-weight: 700;
     line-height: 1.1;
     letter-spacing: -0.03em;
     text-wrap: balance;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
 
   .hero h1 em {
@@ -187,10 +187,11 @@
   }
 
   .hero p {
-    font-size: 1.0625rem;
+    font-size: 1.125rem;
     color: var(--fg-muted);
-    margin-bottom: 32px;
+    margin-bottom: 36px;
     text-wrap: balance;
+    line-height: 1.7;
   }
 
   .hero-cta {
@@ -211,7 +212,7 @@
   .mascot-wrapper {
     position: relative;
     width: 100%;
-    max-width: 280px;
+    max-width: 220px;
     margin: 0 auto;
   }
 
@@ -503,7 +504,7 @@
       text-align: center;
     }
     .hero-visual { order: -1; }
-    .mascot-wrapper { max-width: 280px; margin: 0 auto; }
+    .mascot-wrapper { max-width: 180px; margin: 0 auto; }
     .hero-cta { justify-content: center; }
     .stats { grid-template-columns: 1fr; }
     .nav-links { display: none; }
