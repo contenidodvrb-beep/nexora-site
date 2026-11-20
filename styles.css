@@ -755,3 +755,36 @@
     .tools-banner { flex-direction: column; align-items: flex-start; padding: 24px 20px; }
     .tools-banner .btn { width: 100%; justify-content: center; }
   }
+
+  /* Por que Nexora */
+  #por-que { margin-bottom: 80px; }
+  .vs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 20px; }
+  .vs-col { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 24px; min-width: 0; }
+  .vs-col h3 { font-family: var(--heading); font-size: 1.125rem; font-weight: 700; margin-bottom: 14px; color: var(--fg-muted); }
+  .vs-us { border-color: var(--accent-glow); box-shadow: 0 0 40px var(--accent-soft); }
+  .vs-us h3 { color: var(--accent); }
+  .vs-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .vs-col li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9375rem; line-height: 1.5; }
+  .vs-col:not(.vs-us) li { color: var(--fg-muted); }
+  .vs-mark { flex-shrink: 0; width: 18px; height: 18px; margin-top: 2px; border-radius: 50%; position: relative; }
+  .vs-mark.no { background: rgba(232,236,240,0.08); }
+  .vs-mark.no::before, .vs-mark.no::after { content: ""; position: absolute; left: 4px; top: 8px; width: 10px; height: 2px; border-radius: 1px; background: var(--fg-muted); transform: rotate(45deg); }
+  .vs-mark.no::after { transform: rotate(-45deg); }
+  .vs-mark.yes { background: var(--accent); box-shadow: 0 0 10px var(--accent-glow); }
+  .vs-mark.yes::after { content: ""; position: absolute; left: 6px; top: 3px; width: 5px; height: 9px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  .principles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .principle { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 18px; min-width: 0; }
+  .principle h4 { font-family: var(--heading); font-size: 0.9375rem; font-weight: 600; margin-bottom: 6px; color: var(--fg); }
+  .principle p { font-size: 0.8125rem; color: var(--fg-muted); line-height: 1.5; }
+
+  /* Metodo en 5 pasos */
+  .process-steps { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+  @media (max-width: 900px) {
+    .vs { grid-template-columns: 1fr; }
+    .principles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .process-steps { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .principles { grid-template-columns: 1fr; }
+  }
