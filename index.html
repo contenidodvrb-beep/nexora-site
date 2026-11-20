@@ -422,15 +422,74 @@
   /* Interactive tools grid */
   .tools-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
     margin-bottom: 80px;
+  }
+  .tools-grid .calc { display: flex; flex-direction: column; min-width: 0; }
+  .tool-body { flex: 1; display: flex; flex-direction: column; }
+
+  .tool-btn {
+    font-family: var(--heading);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: 9px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--card-border);
+    background: var(--bg-alt);
+    color: var(--fg);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .tool-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .tool-btn.is-on { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  /* Quiz */
+  .quiz-progress { display: flex; gap: 6px; justify-content: center; margin-bottom: 16px; }
+  .quiz-progress span { width: 28px; height: 4px; border-radius: 2px; background: var(--bg-alt); transition: background 0.3s; }
+  .quiz-progress span.done { background: var(--accent); }
+  .quiz-q { font-size: 0.9375rem; font-weight: 600; text-align: center; min-height: 3em; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; text-wrap: balance; }
+  .quiz-answers { display: flex; gap: 10px; justify-content: center; }
+  .quiz-answers .tool-btn { min-width: 96px; }
+  .quiz-result { text-align: center; }
+  .quiz-level { font-family: var(--heading); font-size: 1.5rem; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+  .quiz-meter { height: 6px; border-radius: 3px; background: var(--bg-alt); overflow: hidden; margin: 12px auto; max-width: 240px; }
+  .quiz-meter div { height: 100%; background: var(--accent); width: 0; transition: width 0.8s ease; }
+  .quiz-msg { font-size: 0.8125rem; color: var(--fg-muted); line-height: 1.5; margin-bottom: 14px; }
+
+  /* Flujo antes/despues */
+  .flow-toggle { display: flex; gap: 8px; justify-content: center; margin-bottom: 16px; }
+  .flow-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .flow-steps li {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 12px; border-radius: var(--radius);
+    background: var(--bg-alt); font-size: 0.8125rem;
+    opacity: 0.35; transition: opacity 0.35s, box-shadow 0.35s;
+  }
+  .flow-steps li.lit { opacity: 1; box-shadow: inset 2px 0 0 var(--accent); }
+  .flow-steps li .who { margin-left: auto; color: var(--fg-muted); font-size: 0.75rem; white-space: nowrap; }
+  .flow-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--fg-muted); flex-shrink: 0; }
+  .flow-steps li.lit .flow-dot { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+  .flow-total { display: flex; justify-content: space-between; align-items: baseline; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--card-border); font-size: 0.8125rem; color: var(--fg-muted); }
+  .flow-total strong { font-family: var(--heading); font-size: 1.25rem; color: var(--accent); }
+
+  /* Industria */
+  .ind-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 16px; }
+  .ind-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .ind-list li { padding: 10px 12px; border-radius: var(--radius); background: var(--bg-alt); font-size: 0.8125rem; line-height: 1.45; animation: indIn 0.4s ease both; }
+  .ind-list li strong { display: block; color: var(--fg); font-size: 0.8125rem; margin-bottom: 2px; }
+  .ind-list li span { color: var(--fg-muted); }
+  .ind-list li:nth-child(2) { animation-delay: 0.08s; }
+  .ind-list li:nth-child(3) { animation-delay: 0.16s; }
+  @keyframes indIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  @media (max-width: 900px) {
+    .tools-grid { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 640px) {
     .calc { padding: 20px 16px; }
     .calc-grid { grid-template-columns: 1fr; gap: 20px; }
-    .tools-grid { grid-template-columns: 1fr; }
   }
 
   /* Sections */
@@ -933,6 +992,76 @@
         </div>
       </div>
     </div>
+
+    <div class="calc" id="quiz">
+      <div class="calc-header">
+        <h3>¿Qué tan automatizado está tu negocio?</h3>
+        <button class="calc-info-toggle" onclick="this.closest('.calc').querySelector('.calc-info').toggleAttribute('hidden')" aria-label="Más información">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 7v4.5M8 4.5v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="calc-info" hidden>
+        <p>Cinco preguntas rápidas de sí o no sobre cómo opera tu negocio hoy. Al final te mostramos tu nivel de automatización y por dónde conviene empezar. No pedimos datos ni guardamos tus respuestas.</p>
+      </div>
+      <div class="tool-body">
+        <div class="quiz-progress" id="quiz-progress"><span></span><span></span><span></span><span></span><span></span></div>
+        <div id="quiz-ask">
+          <div class="quiz-q" id="quiz-q"></div>
+          <div class="quiz-answers">
+            <button class="tool-btn" data-a="1">Sí</button>
+            <button class="tool-btn" data-a="0">No</button>
+          </div>
+        </div>
+        <div class="quiz-result" id="quiz-result" hidden>
+          <div class="quiz-level" id="quiz-level"></div>
+          <div class="quiz-meter"><div id="quiz-meter"></div></div>
+          <p class="quiz-msg" id="quiz-msg"></p>
+          <button class="tool-btn" id="quiz-restart">Repetir</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="calc" id="flujo">
+      <div class="calc-header">
+        <h3>Un pedido por WhatsApp, de principio a fin</h3>
+        <button class="calc-info-toggle" onclick="this.closest('.calc').querySelector('.calc-info').toggleAttribute('hidden')" aria-label="Más información">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 7v4.5M8 4.5v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="calc-info" hidden>
+        <p>Compara el mismo proceso hecho a mano y con una automatización. Cambia entre "Manual" y "Con Nexora" y mira quién hace cada paso y cuánto tarda en total. Los tiempos son referenciales de un negocio típico.</p>
+      </div>
+      <div class="tool-body">
+        <div class="flow-toggle">
+          <button class="tool-btn is-on" data-mode="manual">Manual</button>
+          <button class="tool-btn" data-mode="auto">Con Nexora</button>
+        </div>
+        <ul class="flow-steps" id="flow-steps"></ul>
+        <div class="flow-total"><span id="flow-label">Tiempo total por pedido</span><strong id="flow-time"></strong></div>
+      </div>
+    </div>
+
+    <div class="calc" id="industria">
+      <div class="calc-header">
+        <h3>¿Qué puedes automatizar en tu negocio?</h3>
+        <button class="calc-info-toggle" onclick="this.closest('.calc').querySelector('.calc-info').toggleAttribute('hidden')" aria-label="Más información">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 7v4.5M8 4.5v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="calc-info" hidden>
+        <p>Elige el tipo de negocio que más se parece al tuyo y te mostramos tres automatizaciones que suelen dar resultado primero. Si tu rubro no aparece, escríbenos: casi todo proceso repetitivo se puede automatizar.</p>
+      </div>
+      <div class="tool-body">
+        <div class="ind-chips" id="ind-chips">
+          <button class="tool-btn is-on" data-ind="restaurante">Restaurante</button>
+          <button class="tool-btn" data-ind="clinica">Clínica</button>
+          <button class="tool-btn" data-ind="tienda">Tienda online</button>
+          <button class="tool-btn" data-ind="inmobiliaria">Inmobiliaria</button>
+          <button class="tool-btn" data-ind="servicios">Servicios</button>
+        </div>
+        <ul class="ind-list" id="ind-list"></ul>
+      </div>
+    </div>
   </div>
 
   <section id="servicios">
@@ -1110,5 +1239,150 @@
   people.addEventListener('input', calc);
   rate.addEventListener('input', calc);
   calc();
+})();
+
+(function(){
+  var qs = [
+    '¿Respondes los mensajes de clientes uno por uno, a mano?',
+    '¿Copias datos de un sistema a otro (Excel, facturas, CRM)?',
+    '¿Armas reportes o cierres de forma manual cada semana o mes?',
+    '¿Haces seguimiento a clientes o cobros recordándolo tú mismo?',
+    '¿Se te pierden pedidos o mensajes fuera del horario laboral?'
+  ];
+  var levels = [
+    { min: 0, name: 'Avanzado', msg: 'Tu operación ya está bastante automatizada. Podemos ayudarte a conectar lo que falta y sumar agentes de IA.' },
+    { min: 2, name: 'En camino', msg: 'Tienes una base, pero todavía hay horas valiosas en tareas repetitivas. Hay ganancias rápidas al alcance.' },
+    { min: 4, name: 'Inicial', msg: 'La mayor parte de tu operación depende de trabajo manual. Es justo donde la automatización rinde más y más rápido.' }
+  ];
+  var i = 0, manual = 0;
+  var bars = document.querySelectorAll('#quiz-progress span');
+  var qEl = document.getElementById('quiz-q');
+  var ask = document.getElementById('quiz-ask');
+  var res = document.getElementById('quiz-result');
+
+  function show() {
+    bars.forEach(function(b, k){ b.classList.toggle('done', k < i); });
+    if (i < qs.length) { qEl.textContent = qs[i]; return; }
+    var lv = levels[0];
+    levels.forEach(function(l){ if (manual >= l.min) lv = l; });
+    document.getElementById('quiz-level').textContent = lv.name;
+    document.getElementById('quiz-msg').textContent = lv.msg;
+    ask.hidden = true; res.hidden = false;
+    var meter = document.getElementById('quiz-meter');
+    meter.style.width = '0';
+    requestAnimationFrame(function(){ meter.style.width = ((qs.length - manual) / qs.length * 100) + '%'; });
+  }
+
+  ask.querySelectorAll('[data-a]').forEach(function(b){
+    b.addEventListener('click', function(){ manual += +b.dataset.a; i++; show(); });
+  });
+  document.getElementById('quiz-restart').addEventListener('click', function(){
+    i = 0; manual = 0; ask.hidden = false; res.hidden = true; show();
+  });
+  show();
+})();
+
+(function(){
+  var data = {
+    manual: {
+      steps: [
+        ['Cliente escribe por WhatsApp', 'Tú · 5 min'],
+        ['Revisar stock y precio', 'Tú · 8 min'],
+        ['Anotar pedido en Excel', 'Tú · 6 min'],
+        ['Enviar datos de pago y confirmar', 'Tú · 10 min'],
+        ['Avisar a despacho', 'Tú · 6 min']
+      ],
+      total: '35 min', label: 'Tiempo total por pedido'
+    },
+    auto: {
+      steps: [
+        ['Cliente escribe por WhatsApp', 'Agente IA · 5 s'],
+        ['Revisar stock y precio', 'Automático · 2 s'],
+        ['Registrar pedido en tu sistema', 'Automático · 1 s'],
+        ['Enviar link de pago y confirmar', 'Agente IA · 10 s'],
+        ['Avisar a despacho', 'Automático · 1 s']
+      ],
+      total: '< 1 min', label: 'Tiempo total por pedido'
+    }
+  };
+  var list = document.getElementById('flow-steps');
+  var timeEl = document.getElementById('flow-time');
+  var btns = document.querySelectorAll('#flujo [data-mode]');
+  var timers = [];
+
+  function run(mode) {
+    timers.forEach(clearTimeout); timers = [];
+    btns.forEach(function(b){ b.classList.toggle('is-on', b.dataset.mode === mode); });
+    var d = data[mode];
+    list.innerHTML = '';
+    d.steps.forEach(function(s){
+      var li = document.createElement('li');
+      var dot = document.createElement('span'); dot.className = 'flow-dot';
+      var txt = document.createElement('span'); txt.textContent = s[0];
+      var who = document.createElement('span'); who.className = 'who'; who.textContent = s[1];
+      li.append(dot, txt, who);
+      list.appendChild(li);
+    });
+    timeEl.textContent = '—';
+    var step = mode === 'auto' ? 250 : 650;
+    list.querySelectorAll('li').forEach(function(li, k){
+      timers.push(setTimeout(function(){ li.classList.add('lit'); }, step * (k + 1)));
+    });
+    timers.push(setTimeout(function(){ timeEl.textContent = d.total; }, step * (d.steps.length + 1)));
+  }
+
+  btns.forEach(function(b){ b.addEventListener('click', function(){ run(b.dataset.mode); }); });
+
+  var started = false;
+  var io = new IntersectionObserver(function(e){
+    if (e[0].isIntersecting && !started) { started = true; run('manual'); io.disconnect(); }
+  }, { threshold: 0.4 });
+  io.observe(document.getElementById('flujo'));
+})();
+
+(function(){
+  var data = {
+    restaurante: [
+      ['Pedidos y reservas por WhatsApp', 'Un agente toma el pedido, confirma y lo pasa a cocina sin que nadie conteste a mano.'],
+      ['Control de inventario', 'Alertas automáticas cuando un insumo baja del mínimo.'],
+      ['Reseñas y seguimiento', 'Mensaje post-visita pidiendo reseña a clientes satisfechos.']
+    ],
+    clinica: [
+      ['Agenda de citas 24/7', 'Pacientes agendan, cambian o cancelan por WhatsApp a cualquier hora.'],
+      ['Recordatorios automáticos', 'Avisos el día anterior que reducen las inasistencias.'],
+      ['Fichas e historial', 'Datos del paciente registrados directo en tu sistema, sin transcribir.']
+    ],
+    tienda: [
+      ['Atención y preventa', 'Respuestas inmediatas sobre stock, tallas, envíos y precios.'],
+      ['Carritos abandonados', 'Recordatorio automático a quien no terminó su compra.'],
+      ['Facturación y despacho', 'Cada venta genera factura y orden de envío sola.']
+    ],
+    inmobiliaria: [
+      ['Calificación de interesados', 'El agente filtra por presupuesto y zona antes de pasarte el contacto.'],
+      ['Agenda de visitas', 'Coordina horarios de visita sin ida y vuelta de mensajes.'],
+      ['Seguimiento de prospectos', 'Recontacto automático a quienes no respondieron.']
+    ],
+    servicios: [
+      ['Cotizaciones automáticas', 'Cotizaciones armadas y enviadas en minutos, no en días.'],
+      ['Cobranza', 'Recordatorios de pago escalonados sin incomodar a nadie del equipo.'],
+      ['Reportes para clientes', 'Informes periódicos generados y enviados solos.']
+    ]
+  };
+  var list = document.getElementById('ind-list');
+  var chips = document.querySelectorAll('#ind-chips [data-ind]');
+
+  function pick(k) {
+    chips.forEach(function(c){ c.classList.toggle('is-on', c.dataset.ind === k); });
+    list.innerHTML = '';
+    data[k].forEach(function(it){
+      var li = document.createElement('li');
+      var t = document.createElement('strong'); t.textContent = it[0];
+      var d = document.createElement('span'); d.textContent = it[1];
+      li.append(t, d);
+      list.appendChild(li);
+    });
+  }
+  chips.forEach(function(c){ c.addEventListener('click', function(){ pick(c.dataset.ind); }); });
+  pick('restaurante');
 })();
 </script>
