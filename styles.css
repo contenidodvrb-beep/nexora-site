@@ -563,22 +563,6 @@
     min-width: 0;
   }
 
-  .service-price {
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid var(--card-border);
-    font-family: var(--heading);
-    font-weight: 600;
-    font-size: 1.125rem;
-    color: var(--accent);
-  }
-
-  .service-price span {
-    font-size: 0.8125rem;
-    font-weight: 400;
-    color: var(--fg-muted);
-  }
-
   /* Process */
   .process-steps {
     display: grid;
