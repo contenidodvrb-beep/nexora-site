@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Diagnóstico de automatización — Nexora</title>
+<meta name="description" content="Calcula cuánto puedes ahorrar automatizando y descubre el nivel de automatización de tu negocio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<!-- Circuit grid background with animated nodes -->
+<div class="circuit-grid-bg">
+  <svg viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <!-- Grid lines -->
+    <line x1="0" y1="100" x2="1200" y2="100" stroke="var(--circuit)" stroke-width="0.5"/>
+    <line x1="0" y1="200" x2="1200" y2="200" stroke="var(--circuit)" stroke-width="0.5"/>
+    <line x1="0" y1="300" x2="1200" y2="300" stroke="var(--circuit)" stroke-width="0.5"/>
+    <line x1="0" y1="400" x2="1200" y2="400" stroke="var(--circuit)" stroke-width="0.5"/>
+    <line x1="0" y1="500" x2="1200" y2="500" stroke="var(--circuit)" stroke-width="0.5"/>
+    <line x1="0" y1="600" x2="1200" y2="600" stroke="var(--circuit)" stroke-width="0.5"/>
+    <line x1="0" y1="700" x2="1200" y2="700" stroke="var(--circuit)" stroke-width="0.5"/>
+    <line x1="0" y1="800" x2="1200" y2="800" stroke="var(--circuit)" stroke-width="0.5"/>
+    <line x1="100" y1="0" x2="100" y2="900" stroke="var(--circuit)" stroke-width="0.5"/>
+    <line x1="200" y1="0" x2="200" y2="900" stroke="var(--circuit)" stroke-width="0.5"/>
+    <line x1="300" y1="0" x2="300" y2="900" stroke="var(--circuit)" stroke-width="0.5"/>
+    <line x1="400" y1="0" x2="400" y2="900" stroke="var(--circuit)" stroke-width="0.5"/>
+    <line x1="500" y1="0" x2="500" y2="900" stroke="var(--circuit)" stroke-width="0.5"/>
+    <line x1="600" y1="0" x2="600" y2="900" stroke="var(--circuit)" stroke-width="0.5"/>
+    <line x1="700" y1="0" x2="700" y2="900" stroke="var(--circuit)" stroke-width="0.5"/>
+    <line x1="800" y1="0" x2="800" y2="900" stroke="var(--circuit)" stroke-width="0.5"/>
+    <line x1="900" y1="0" x2="900" y2="900" stroke="var(--circuit)" stroke-width="0.5"/>
+    <line x1="1000" y1="0" x2="1000" y2="900" stroke="var(--circuit)" stroke-width="0.5"/>
+    <line x1="1100" y1="0" x2="1100" y2="900" stroke="var(--circuit)" stroke-width="0.5"/>
+    <!-- Animated nodes at intersections -->
+    <circle class="circuit-node" cx="100" cy="100" r="3" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="300" cy="100" r="2.5" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="600" cy="100" r="2" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="900" cy="100" r="3" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="1100" cy="100" r="2" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="200" cy="200" r="2.5" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="500" cy="200" r="3" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="800" cy="200" r="2" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="1000" cy="200" r="2.5" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="100" cy="300" r="2" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="400" cy="300" r="3" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="700" cy="300" r="2.5" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="1100" cy="300" r="2" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="300" cy="400" r="2.5" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="600" cy="400" r="3" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="900" cy="400" r="2" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="200" cy="500" r="3" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="500" cy="500" r="2.5" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="800" cy="500" r="2" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="1000" cy="500" r="3" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="100" cy="600" r="2.5" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="400" cy="600" r="2" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="700" cy="600" r="3" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="1100" cy="600" r="2.5" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="300" cy="700" r="2" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="600" cy="700" r="2.5" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="900" cy="700" r="3" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="200" cy="800" r="2.5" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="500" cy="800" r="2" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="800" cy="800" r="3" fill="var(--accent)"/>
+    <circle class="circuit-node" cx="1100" cy="800" r="2" fill="var(--accent)"/>
+    <!-- Diagonal connection traces -->
+    <line x1="100" y1="100" x2="300" y2="300" stroke="var(--accent)" stroke-width="0.5" opacity="0.1"/>
+    <line x1="600" y1="100" x2="400" y2="300" stroke="var(--accent)" stroke-width="0.5" opacity="0.1"/>
+    <line x1="900" y1="200" x2="1100" y2="400" stroke="var(--accent)" stroke-width="0.5" opacity="0.08"/>
+    <line x1="500" y1="400" x2="700" y2="600" stroke="var(--accent)" stroke-width="0.5" opacity="0.1"/>
+    <line x1="200" y1="500" x2="400" y2="700" stroke="var(--accent)" stroke-width="0.5" opacity="0.08"/>
+    <line x1="800" y1="600" x2="1000" y2="800" stroke="var(--accent)" stroke-width="0.5" opacity="0.1"/>
+  </svg>
+</div>
+
+<div class="wrap">
+  <nav>
+    <a href="/" class="logo-mark">
+      <svg class="logo-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(9, 3)">
+          <line x1="0" y1="0" x2="0" y2="30" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="0" y1="0" x2="18" y2="30" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="18" y1="0" x2="18" y2="30" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="0" cy="0" r="3.5" fill="var(--accent)"/>
+          <circle cx="18" cy="30" r="3.5" fill="var(--accent)"/>
+          <circle cx="0" cy="30" r="3.5" fill="var(--accent)" opacity="0.35"/>
+          <circle cx="18" cy="0" r="3.5" fill="var(--accent)" opacity="0.35"/>
+          <circle cx="9" cy="15" r="2" fill="var(--accent)" opacity="0.7"/>
+        </g>
+      </svg>
+      <div class="logo">nexora<span>.</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="/#servicios">Servicios</a>
+      <a href="/#proceso">Proceso</a>
+      <a href="/diagnostico/" aria-current="page">Diagnóstico</a>
+      <a href="/#contacto" class="btn">Conversemos</a>
+    </div>
+  </nav>
+
+  <header class="page-head">
+    <div class="section-eyebrow">Diagnóstico gratuito</div>
+    <h1>Descubre cuánto puede ganar tu negocio automatizando</h1>
+    <p class="section-desc">Dos herramientas rápidas: calcula tu ahorro y mide qué tan automatizada está tu operación hoy. Sin registros ni datos personales.</p>
+  </header>
+
+  <div class="tools-grid">
+    <div class="calc" id="calculadora">
+      <div class="calc-header">
+        <h3>¿Cuánto puedes ahorrar automatizando?</h3>
+        <button class="calc-info-toggle" onclick="this.closest('.calc').querySelector('.calc-info').toggleAttribute('hidden')" aria-label="Más información">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 7v4.5M8 4.5v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="calc-info" hidden>
+        <p>Esta calculadora estima cuánto dinero y tiempo puede recuperar tu empresa al automatizar tareas repetitivas. Basado en un ratio de automatización del 60% — el estándar de la industria para procesos operativos comunes como data entry, reportes, seguimiento de clientes y facturación.</p>
+      </div>
+      <div class="calc-grid">
+        <div class="calc-inputs">
+          <div class="calc-field">
+            <label>Horas semanales en tareas manuales <span>(por persona)</span></label>
+            <div class="calc-slider-row">
+              <input type="range" id="calc-hours" min="2" max="40" value="15">
+              <div class="calc-value" id="calc-hours-val">15h</div>
+            </div>
+          </div>
+          <div class="calc-field">
+            <label>Personas en tu equipo</label>
+            <div class="calc-slider-row">
+              <input type="range" id="calc-people" min="1" max="20" value="3">
+              <div class="calc-value" id="calc-people-val">3</div>
+            </div>
+          </div>
+          <div class="calc-field">
+            <label>Costo por hora <span>(USD promedio)</span></label>
+            <div class="calc-slider-row">
+              <input type="range" id="calc-rate" min="3" max="30" value="8">
+              <div class="calc-value" id="calc-rate-val">$8</div>
+            </div>
+          </div>
+        </div>
+        <div class="calc-results">
+          <div>
+            <div class="calc-result-big" id="calc-savings">$1,080</div>
+            <div class="calc-result-label">ahorro mensual estimado</div>
+          </div>
+          <div class="calc-result-row">
+            <span>Horas recuperadas al mes</span>
+            <span id="calc-hours-saved">108h</span>
+          </div>
+          <div class="calc-result-row">
+            <span>Ahorro anual proyectado</span>
+            <span id="calc-annual">$12,960</span>
+          </div>
+          <div class="calc-result-row">
+            <span>Tareas que se pueden automatizar</span>
+            <span>~60%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="calc" id="quiz">
+      <div class="calc-header">
+        <h3>¿Qué tan automatizado está tu negocio?</h3>
+        <button class="calc-info-toggle" onclick="this.closest('.calc').querySelector('.calc-info').toggleAttribute('hidden')" aria-label="Más información">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 7v4.5M8 4.5v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="calc-info" hidden>
+        <p>Cinco preguntas rápidas de sí o no sobre cómo opera tu negocio hoy. Al final te mostramos tu nivel de automatización y por dónde conviene empezar. No pedimos datos ni guardamos tus respuestas.</p>
+      </div>
+      <div class="tool-body">
+        <div class="quiz-progress" id="quiz-progress"><span></span><span></span><span></span><span></span><span></span></div>
+        <div id="quiz-ask">
+          <div class="quiz-q" id="quiz-q"></div>
+          <div class="quiz-answers">
+            <button class="tool-btn" data-a="1">Sí</button>
+            <button class="tool-btn" data-a="0">No</button>
+          </div>
+        </div>
+        <div class="quiz-result" id="quiz-result" hidden>
+          <div class="quiz-level" id="quiz-level"></div>
+          <div class="quiz-meter"><div id="quiz-meter"></div></div>
+          <p class="quiz-msg" id="quiz-msg"></p>
+          <div class="quiz-actions">
+            <a class="btn" id="quiz-cta" href="/#contacto">Hablar con Nexora sobre mi resultado</a>
+            <button class="tool-btn" id="quiz-restart">Repetir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <a href="/" class="logo-mark" style="text-decoration:none;">
+      <svg style="width:28px;height:28px;" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(9, 3)">
+          <line x1="0" y1="0" x2="0" y2="30" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="0" y1="0" x2="18" y2="30" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="18" y1="0" x2="18" y2="30" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="0" cy="0" r="3.5" fill="var(--accent)"/>
+          <circle cx="18" cy="30" r="3.5" fill="var(--accent)"/>
+          <circle cx="0" cy="30" r="3.5" fill="var(--accent)" opacity="0.35"/>
+          <circle cx="18" cy="0" r="3.5" fill="var(--accent)" opacity="0.35"/>
+          <circle cx="9" cy="15" r="2" fill="var(--accent)" opacity="0.7"/>
+        </g>
+      </svg>
+      <div class="logo" style="font-size:1.125rem;">nexora<span>.</span></div>
+    </a>
+    <div class="footer-links">
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+      <a href="#">WhatsApp</a>
+    </div>
+    <div>&copy; 2026 Nexora. Todos los derechos reservados.</div>
+  </footer>
+</div>
+
+<script>
+// Número de WhatsApp de Nexora en formato internacional sin + ni espacios (ej. 573001234567). Vacío = el botón lleva a /#contacto.
+var WA_NUMBER = '';
+
+(function(){
+  var hours = document.getElementById('calc-hours');
+  var people = document.getElementById('calc-people');
+  var rate = document.getElementById('calc-rate');
+  var hoursVal = document.getElementById('calc-hours-val');
+  var peopleVal = document.getElementById('calc-people-val');
+  var rateVal = document.getElementById('calc-rate-val');
+  var savings = document.getElementById('calc-savings');
+  var hoursSaved = document.getElementById('calc-hours-saved');
+  var annual = document.getElementById('calc-annual');
+
+  function fmt(n) {
+    return '$' + n.toLocaleString('en-US');
+  }
+
+  function calc() {
+    var h = +hours.value;
+    var p = +people.value;
+    var r = +rate.value;
+    var autoRate = 0.6;
+    var monthlyHours = Math.round(h * p * 4.33 * autoRate);
+    var monthlySavings = monthlyHours * r;
+    var annualSavings = monthlySavings * 12;
+
+    hoursVal.textContent = h + 'h';
+    peopleVal.textContent = p;
+    rateVal.textContent = '$' + r;
+    savings.textContent = fmt(monthlySavings);
+    hoursSaved.textContent = monthlyHours + 'h';
+    annual.textContent = fmt(annualSavings);
+  }
+
+  hours.addEventListener('input', calc);
+  people.addEventListener('input', calc);
+  rate.addEventListener('input', calc);
+  calc();
+})();
+
+(function(){
+  var qs = [
+    '¿Respondes los mensajes de clientes uno por uno, a mano?',
+    '¿Copias datos de un sistema a otro (Excel, facturas, CRM)?',
+    '¿Armas reportes o cierres de forma manual cada semana o mes?',
+    '¿Haces seguimiento a clientes o cobros recordándolo tú mismo?',
+    '¿Se te pierden pedidos o mensajes fuera del horario laboral?'
+  ];
+  var levels = [
+    { min: 0, name: 'Avanzado', msg: 'Tu operación ya está bastante automatizada. Podemos ayudarte a conectar lo que falta y sumar agentes de IA.' },
+    { min: 2, name: 'En camino', msg: 'Tienes una base, pero todavía hay horas valiosas en tareas repetitivas. Hay ganancias rápidas al alcance.' },
+    { min: 4, name: 'Inicial', msg: 'La mayor parte de tu operación depende de trabajo manual. Es justo donde la automatización rinde más y más rápido.' }
+  ];
+  var i = 0, manual = 0;
+  var bars = document.querySelectorAll('#quiz-progress span');
+  var qEl = document.getElementById('quiz-q');
+  var ask = document.getElementById('quiz-ask');
+  var res = document.getElementById('quiz-result');
+
+  function show() {
+    bars.forEach(function(b, k){ b.classList.toggle('done', k < i); });
+    if (i < qs.length) { qEl.textContent = qs[i]; return; }
+    var lv = levels[0];
+    levels.forEach(function(l){ if (manual >= l.min) lv = l; });
+    document.getElementById('quiz-level').textContent = lv.name;
+    document.getElementById('quiz-msg').textContent = lv.msg;
+    ask.hidden = true; res.hidden = false;
+    var cta = document.getElementById('quiz-cta');
+    if (WA_NUMBER) {
+      var ahorro = document.getElementById('calc-savings');
+      var txt = 'Hola Nexora, hice el diagnóstico en su web y salí en nivel ' + lv.name + '.';
+      if (ahorro) txt += ' La calculadora me estima ' + ahorro.textContent + ' de ahorro al mes.';
+      cta.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(txt);
+      cta.target = '_blank'; cta.rel = 'noopener';
+    }
+    var meter = document.getElementById('quiz-meter');
+    meter.style.width = '0';
+    requestAnimationFrame(function(){ meter.style.width = ((qs.length - manual) / qs.length * 100) + '%'; });
+  }
+
+  ask.querySelectorAll('[data-a]').forEach(function(b){
+    b.addEventListener('click', function(){ manual += +b.dataset.a; i++; show(); });
+  });
+  document.getElementById('quiz-restart').addEventListener('click', function(){
+    i = 0; manual = 0; ask.hidden = false; res.hidden = true; show();
+  });
+  show();
+})();
+</script>
+</body>
+</html>
