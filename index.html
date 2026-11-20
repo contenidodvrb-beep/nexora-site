@@ -1333,9 +1333,9 @@
 
   btns.forEach(function(b){ b.addEventListener('click', function(){ run(b.dataset.mode); }); });
 
-  var started = false;
+  run('manual');
   var io = new IntersectionObserver(function(e){
-    if (e[0].isIntersecting && !started) { started = true; run('manual'); io.disconnect(); }
+    if (e[0].isIntersecting) { run('manual'); io.disconnect(); }
   }, { threshold: 0.4 });
   io.observe(document.getElementById('flujo'));
 })();
