@@ -477,6 +477,7 @@
   .ind-list li span { color: var(--fg-muted); }
   .ind-list li:nth-child(2) { animation-delay: 0.08s; }
   .ind-list li:nth-child(3) { animation-delay: 0.16s; }
+  .ind-list li:nth-child(4) { animation-delay: 0.24s; }
   @keyframes indIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
   @media (max-width: 900px) {
@@ -723,7 +724,7 @@
 
   /* Industry picker inside services */
   .services-extra { margin-top: 24px; }
-  .services-extra .ind-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .services-extra .ind-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
   .services-extra .ind-list li { height: 100%; }
 
   /* Banner to diagnostico */
@@ -749,9 +750,10 @@
   .quiz-actions .btn { font-size: 0.8125rem; padding: 10px 18px; }
 
   @media (max-width: 900px) {
-    .services-extra .ind-list { grid-template-columns: 1fr; }
+    .services-extra .ind-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 640px) {
+    .services-extra .ind-list { grid-template-columns: 1fr; }
     .tools-banner { flex-direction: column; align-items: flex-start; padding: 24px 20px; }
     .tools-banner .btn { width: 100%; justify-content: center; }
   }
